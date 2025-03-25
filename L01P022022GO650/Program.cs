@@ -1,7 +1,15 @@
+using L01P022022GO650.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+builder.Services.AddDbContext<db_notasContext>(opt =>
+        opt.UseSqlServer(
+            builder.Configuration.GetConnectionString("equipoDbConnection")));
 
 var app = builder.Build();
 
